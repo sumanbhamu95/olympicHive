@@ -1,0 +1,30 @@
+create table olympic(name string,age int,country string,year int,held_date string,sports string,at1 int,at2 int,at3 int,total int)row format delimited fields terminated by "\t" stored as textfile;
+
+
+load data local inpath '/home/hduser/olympic_data.csv' into table olympic;
+
+
+
+1.total no. of partcipants in each country
+select country,count(distinct name) from olympic group by country;
+
+
+2.no. of countries participated in olympic
+select count(distinct country) from olympic;
+
+
+
+3.no. of participants for each year
+select sports,count(name) from olympic group by sports;
+
+
+4.total no. of games in olympics
+select count(distinct sports) from olympic;
+
+
+
+5.month wise ----no. of candidates
+select held_date,count(name) from olympic group by held_date;
+
+
+
